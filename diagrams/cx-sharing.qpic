@@ -1,0 +1,32 @@
+PREAMBLE \providecommand{\ket}[1]{\left|#1\right\rangle}
+
+SCALE 1.0
+
+
+# Wires
+
+a W {\ket{0}}
+aa W {\ket{0}}
+aaa W {\ket{0}}
+aaaa W {\ket{0}}
+...ab W 
+bbb W {\ket{0}}
+bb W {\ket{0}}
+b W {\ket{0}}
+
+
+
+# Gates
+
+a H
+a +aa
+
+TOUCH
+
+aa +aaa
+aaa +aaaa
+aaaa
+TOUCH
++bbb
+bbb +bb
+bb +b

@@ -1,0 +1,47 @@
+PREAMBLE \usetikzlibrary{decorations.pathmorphing}
+
+PREAMBLE \providecommand{\ket}[1]{\left|#1\right\rangle}
+DEFINE start1 style=->,decorate,decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}
+DEFINE start2 style=<-,decorate,decoration={snake,amplitude=.4mm,segment length=2mm,pre length=1mm}
+
+a DEFINE cutW a W style=dashed,red,decorate,decoration={snake,amplitude=.4mm,segment length=4mm,post length=0mm} # cut between QPUs
+
+COLOR darkgreen 0.13 0.54 0.13
+DEFINE startingcolor color=darkgreen
+DEFINE endingcolor color=blue
+
+SCALE 1.0
+
+
+# Wires
+
+c0 W \ket{\psi_A}_{a_0}
+a0 W
+cut01 cutW
+a1 W
+a0 a1 W {\ket{\phi^+}_{a_1,b}}<
+a1 W \ket{\psi_A}_{b}
+
+
+# Gates
+
+cut01 START
+c0 START
+
+# Starting gates
+MARK startentangler
++a0 c0 startingcolor a0:startingcolor
+a0 M startingcolor
+a1 X a0 startingcolor a0:owire
+MARK endentangler
+
+TOUCH
+a0 G $$ shape=0
+TOUCH
+
+# Ending gates
+MARK startdisentangler
+c0 H endingcolor c0:endingcolor
+c0 M endingcolor
+a1 G {$Z$} endingcolor c0:owire
+MARK enddisentangler

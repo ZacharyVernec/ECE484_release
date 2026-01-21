@@ -1,0 +1,16 @@
+PREAMBLE \providecommand{\ket}[1]{\left|#1\right\rangle}
+
+SCALE 1.0
+
+
+# Wires
+
+a0 W {\ket{0}}
+a1 W {\ket{0}}
+a0 a1 W >{\ket{\phi^+}}
+
+
+# Gates
+
+a0 H
+a0 +a1

@@ -1,0 +1,33 @@
+PREAMBLE \usetikzlibrary{decorations.pathmorphing}
+
+PREAMBLE \providecommand{\ket}[1]{\left|#1\right\rangle}
+DEFINE epr style=decorate,decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}
+DEFINE start1 style=->,decorate,decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}
+DEFINE start2 style=<-,decorate,decoration={snake,amplitude=.4mm,segment length=2mm,pre length=1mm}
+a b DEFINE starting +b start1 +a b:color=black op=0:shape=>:size=0
+a b DEFINE ending +b start2 +a b:color=white op=0:shape=>:size=0
+a b DEFINE ending_nst +b start1 +a a:color=white op=0:shape=>:size=0
+
+a DEFINE cutW a W style=dashed,red,decorate,decoration={snake,amplitude=.4mm,segment length=4mm,post length=0mm} # cut between QPUs
+a DEFINE commW a W color=white # communication wire
+a e b DEFINE nlCZ a e starting ; e b ; a e ending ;
+a DEFINE show_commW +a shape=0 operator=0 size=0 a:color=black
+
+COLOR darkgreen 0.13 0.54 0.13
+DEFINE startingcolor color=darkgreen
+DEFINE endingcolor color=blue
+
+SCALE 1.0
+
+
+# Wires
+
+a0 W {\ket{0}}
+a1 W {\ket{0}}
+a0 a1 W >{\ket{\phi^+}}
+
+
+# Gates
+
+a0 H
+a0 +a1

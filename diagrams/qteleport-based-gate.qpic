@@ -1,0 +1,86 @@
+PREAMBLE \usetikzlibrary{decorations.pathmorphing}
+
+PREAMBLE \providecommand{\ket}[1]{\left|#1\right\rangle}
+DEFINE epr style=decorate,decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}
+DEFINE start1 style=->,decorate,decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}
+DEFINE start2 style=<-,decorate,decoration={snake,amplitude=.4mm,segment length=2mm,pre length=1mm}
+a b DEFINE starting +b start1 +a b:color=black op=0:shape=>:size=0
+a b DEFINE ending +b start2 +a b:color=white op=0:shape=>:size=0
+a b DEFINE ending_nst +b start1 +a a:color=white op=0:shape=>:size=0
+
+a DEFINE cutW a W style=dashed,red,decorate,decoration={snake,amplitude=.4mm,segment length=4mm,post length=0mm} # cut between QPUs
+a DEFINE commW a W color=white # communication wire
+a e b DEFINE nlCZ a e starting ; e b ; a e ending ;
+a DEFINE show_commW +a shape=0 operator=0 size=0 a:color=black
+
+COLOR darkgreen 0.13 0.54 0.13
+DEFINE startingcolor color=darkgreen
+DEFINE endingcolor color=blue
+
+SCALE 1.0
+
+
+# Wires
+
+a0 W \ket{\psi_A}_{a_0}
+a1 W
+a2 W
+cutab cutW
+b2 W
+b1 W
+b0 W \ket{\psi_B}_{b_0}
+
+a1 b1 W {\ket{\phi^+}_{a_1,b_1}}<
+a2 b2 W {\ket{\phi^+}_{a_2,b_2}}<
+
+a2 b0 W >{CX \left( \ket{\psi_A} \otimes \ket{\psi_B} \right)}
+
+
+# Gates
+
+
+a1 START
+b1 START
+TOUCH
+a1 G $$ shape=0
+b1 G $$ shape=0
+TOUCH
+
+a2 START
+b2 START
+
+cutab START
+a0 START
+b0 START
+
+# Starting gates
+MARK startentangler
++a1 a0 startingcolor a1:startingcolor
+a1 M startingcolor
+b1 X a1 startingcolor a1:owire
+MARK endentangler
+
+# Ending gates
+MARK startdisentangler
+a0 H endingcolor a0:endingcolor
+a0 M endingcolor
+b1 G {$Z$} endingcolor a0:owire
+MARK enddisentangler
+
+TOUCH
+b1 +b0
+TOUCH
+
+# Starting gates
+MARK startentangler
++b2 b1 startingcolor b2:startingcolor
+b2 M startingcolor
+a2 X b2 startingcolor b2:owire
+MARK endentangler
+
+# Ending gates
+MARK startdisentangler
+b1 H endingcolor b1:endingcolor
+b1 M endingcolor
+a2 G {$Z$} endingcolor b1:owire
+MARK enddisentangler

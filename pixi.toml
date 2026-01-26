@@ -1,16 +1,14 @@
 [workspace]
 channels = ["conda-forge"]
-name = "ECE484-assignment1"
+name = "ECE484-assignment2"
 platforms = ["linux-64"]
 version = "1.0.0"
 
 [tasks]
 # Format code using black (auto-format Python files)
-format = "black src tests || true"
+format = "black src || true"
 # Lint code using ruff (check for code style issues)
-lint = "ruff check src tests || true"
-# Run Python interpreter in the pixi environment
-python = "python"
+lint = "ruff check src || true"
 
 [dependencies]
 python = ">=3.11,<3.12"

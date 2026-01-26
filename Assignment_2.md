@@ -1,6 +1,6 @@
 # Assignment 2 — Multi-Qubit Circuits & Early Algorithms
 
-**Submission:** After the deadline, you will no longer have access to this Git repository. See **Section 3.1** of this PDF for the required deliverables to include in this repository.
+**Submission:** After the deadline, you will no longer have access to this Git repository and we will count the last commit before the deadline as your submission. See **Section 3.1** of this PDF for the required deliverables to include in this repository.
 
 ***
 
@@ -16,11 +16,14 @@ By completing this assignment, you will be able to:
 
 ## 2 — Development Environment & Software Stack
 
-For GitHub Codespaces, you need to create a new codespaces based on this repository.
-For a local setup, you may use the same programming environment as assignment 1, but make sure to clone this repository.
-If you install other packages to your environment, please make sure that your pixi.toml and pixi.lock files are up-to-date, clearly state so at the end of your submission document.
+For GitHub Codespaces, you need to create a new Codespace based on this repository.
+
+For a local setup, you may use the same method as in Assignment 1 with Pixi. Install dependencies with `pixi install`, optionally add a dependency with `pixi add [--pypi] <package-name>`. Run your code with `pixi run python <script-name>`, you can also use `pixi shell` to open a shell with all dependencies installed, and then run your code normally with `python <script-name>`.
+
+If you install additional packages in your environment, please make sure to keep your `pixi.toml` and `pixi.lock` files up to date on GitHub so we can recreate your environment and run your code (they are automatically updated when you use `pixi add ...`). Clearly state any modifications you made at the end of your submission document.
 
 For this assignment, you may use the software stack of your choice.
+
 
 ***
 
@@ -58,7 +61,7 @@ which would imply the following file structure:
     └── Q3.py
 ```
 
-Do no touch the files in `tests/`, `.devcontainer/`, `random_seed.yaml` or any other files/folders not mentioned above. We will automatically detect the submission that have modified forbidden files and may penalize them.
+Do no touch the files in `.devcontainer/` or any other files/folders not mentioned above. We will automatically detect the submission that have modified forbidden files and may penalize them.
 
 There are no automated tests for this assignment.
 
@@ -68,19 +71,19 @@ There are no automated tests for this assignment.
 
 The following is the quantum state teleportation circuit as seen in class, which implements the teleportation of a quantum state from Alice to Bob using an e-bit $|\phi^+\rangle$ of pre-shared entanglement: 
 
-![Quantum state teleportation circuit](diagrams/qteleport.png){ width=50% }
+![Quantum state teleportation circuit](diagrams/qteleport.png){ width=75% }
 
 #### A) (5 pts)
 
 Using quantum teleportation, design a circuit that can apply the two qubit gate $CX$ between a state held by Alice and a state held by Bob. Alice and Bob can have pre-shared entanglement and can communicate classically.
 
-Explain your scheme with a diagram.
+Explain your scheme with a diagram, and going through the steps of the protocol in your own words.
 
 #### B) (5 pts)
 
 Write an implementation of your scheme using the software stack of your choice.
 
-The default choice would be python & qiskit which can be installed in this notebook with `!pip install qiskit`. Small bonus points for choosing a non-qiskit stack, though please be clear on how to build & run your code and on which results correspond to which code if not using a jupyter notebook.
+The default choice would be Python and Qiskit, which are already part of the provided Pixi environment. Small bonus points are possible for choosing a non-Qiskit stack; however, please be clear about how to build and run your code, and which results correspond to which code, especially if you are not using a Jupyter notebook.
 
 You can implement the initialization of $|\phi^+\rangle$ as 
 
@@ -107,6 +110,8 @@ Design a circuit that behaves identically to Q1-A, but that uses only a single e
 
 Hint: Use the same gates as quantum teleportation, but arranged differently.
 
+Explain your scheme with a diagram, and going through the steps of the protocol in your own words.
+
 #### B) (5 pts)
 
 As in Q1-B, implement and benchmark your Q2-A circuit.
@@ -126,7 +131,7 @@ or a CX-based long-range entanglement subcircuit
 
 ***
 
-### Q3 — Title (25 pts)
+### Q3 — Any Distributed Quantum Algorithm (25 pts)
 
 Pick a quantum algorithm of your choice, and implement in a local and in a distributed manner, using state teleporations (Q1-A) or gate teleportations (Q2-A).
 Make sure to clearly describe your algorithm and an appropriate success metric.

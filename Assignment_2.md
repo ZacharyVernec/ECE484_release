@@ -75,15 +75,18 @@ The following is the quantum state teleportation circuit as seen in class, which
 
 #### A) (5 pts)
 
-Using quantum teleportation, design a circuit that can apply the two qubit gate $CX$ between a state held by Alice and a state held by Bob. Alice and Bob can have pre-shared entanglement and can communicate classically.
+Using quantum state teleportation as a building block, design a circuit that can apply the two qubit gate $CX$ between a state held by Alice and a state held by Bob. Alice and Bob can have pre-shared entanglement and can communicate classically.
 
 Explain your scheme with a diagram, and going through the steps of the protocol in your own words.
+
+Note: as you will see in Q2, this is also possible without directly using quantum state teleportation. However, in this Q1, you *must* use the quantum state teleportation diagramed above as a building block.
+
 
 #### B) (5 pts)
 
 Write an implementation of your scheme using the software stack of your choice.
 
-The default choice would be Python and Qiskit, which are already part of the provided Pixi environment. Small bonus points are possible for choosing a non-Qiskit stack; however, please be clear about how to build and run your code, and which results correspond to which code, especially if you are not using a Jupyter notebook.
+The default choice would be Python and Qiskit/Pennylane which are already part of the provided Pixi environment. Please be clear about how to build and run your code, and which results correspond to which code.
 
 You can implement the initialization of $|\phi^+\rangle$ as 
 
@@ -118,8 +121,8 @@ As in Q1-B, implement and benchmark your Q2-A circuit.
 
 #### C) (10 pts)
 
-Re-benchmark Q1-B and Q2-B, but with a variable distance between Alice Bob over which they need to preshare entanglement. 
-Plot and command on accuracy of the non-local gate over distance, and try to tease out a relationship.
+Re-benchmark Q1-B and Q2-B, but with a variable "distance" between Alice Bob over which they need to preshare entanglement. 
+Plot the accuracy of your non-local gate as a function of this distance and comment on what you observe.
 
 The entanglement pre-sharing can be done with any subcircuit you want. For example, you can do a swap-based sharing
 
@@ -129,11 +132,13 @@ or a CX-based long-range entanglement subcircuit
 
 ![CX-based entanglement sharing](diagrams/cx-sharing.png){ width=25% }
 
+Note: This "distance" for pre-shared entanglement is a way to introduce a variable amount of noise. However, it is important to realize that this does not necessarily correspond to the same noise as would be present if you were to share entanglement over a fibre-optic network of variable distance.
+
 ***
 
 ### Q3 — Any Distributed Quantum Algorithm (25 pts)
 
-Pick a quantum algorithm of your choice, and implement in a local and in a distributed manner, using state teleporations (Q1-A) or gate teleportations (Q2-A).
+Pick a quantum algorithm of your choice, and implement in a local and in a distributed manner, using state teleportations (Q1-A) or gate teleportations (Q2-A).
 Make sure to clearly describe your algorithm and an appropriate success metric.
 Obvious suggestions are the algorithms described in class (Deutsch, Deutsch-Josza, Berstein-Vazirani, etc.), but I encourage you to explore other algorithms.
 

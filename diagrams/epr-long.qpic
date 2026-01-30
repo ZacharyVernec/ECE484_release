@@ -7,10 +7,16 @@ SCALE 1.0
 
 a0 W {\ket{0}}
 a1 W {\ket{0}}
-a0 a1 W >{\ket{\phi^+}}
+a2 W {\ket{0}}
+a3 W {\ket{0}}
+a0 a3 W >{\ket{\phi^+}}
 
 
 # Gates
 
 a0 H
 a0 +a1
+a1 +a2
+a2 +a3
+a1 a2 END
+TOUCH

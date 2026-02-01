@@ -65,9 +65,9 @@ which would imply the following file structure:
     └── Q3_d.py
 ```
 
-Do no touch the files in `.devcontainer/` or any other files/folders not mentioned above.
+Do no touch the files in `.devcontainer/`.
 
-There are no automated tests for this assignment.
+There are no automated tests for this assignment
 
 ***
 
@@ -88,7 +88,7 @@ Note: As you will see in Q2, this is also possible without directly using quantu
 
 #### B) (coding, 5 pts)
 
-Write an implementation of your scheme using Qiskit, which is already part of the provided Pixi environment. Please be clear about how to build and run your code, and which results correspond to which code.
+Write an implementation of your scheme using Qiskit, which is already part of the provided Pixi environment. Please be clear about how to run your code, and which results correspond to which code.
 
 You can implement the initialization of $|\phi^+\rangle$ as the following:
 
@@ -96,7 +96,7 @@ You can implement the initialization of $|\phi^+\rangle$ as the following:
 
 #### C) (coding, 5 pts)
 
-Evaluate your implementation on a reasonable amount of input states, enough to show that your gate works as expected.
+Evaluate your implementation on a reasonable amount of input states, enough to show that your gate works as expected, i.e., show that the final state is close to the expected output state after applying $CX$ between Alice and Bob's qubits directly.
 Include plots/data for both noiseless simulation results and noiseful simulation results.
 For an example of how to do a noisy simulation, refer to `examples/aer_simulator_examples.py`. 
 
@@ -168,7 +168,7 @@ First, implement the non-distributed version of your algorithm.
 
 Take your algorithm and distribute it across two quantum computers.
 
-That is, you should designate half your qubits to belong to Alice, and the other half to belong to Bob, and use quantum state teleportations (Q1-A) or gate teleportations (Q2-A) to split you circuit across Alice's and Bob's qubits.
+That is, you should designate half your qubits to belong to Alice, and the other half to belong to Bob, and use quantum state teleportations (Q1-A) or gate teleportations (Q2-A) to split you circuit across Alice's and Bob's qubits, for an arbitrary number of qubits.
 There should be no two-qubit gates between Alice's qubits and Bob's qubits other than those to generate shared entanglement $|\phi^+\rangle$.
 
 Explain how you turn your algorithm into a distributed algorithm, preferably with a diagram.
